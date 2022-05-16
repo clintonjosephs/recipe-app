@@ -11,6 +11,10 @@
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="field pb-2">
+              <%= f.label 'Profile Picture' %><br />
+              <%= f.file_field :image, class: 'form-control' %>
+            </div>
 
             <div class="field pb-2">
               <%= f.label :name %><br />
