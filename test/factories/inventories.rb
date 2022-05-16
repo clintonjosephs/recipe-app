@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :inventory do
-    name { "MyText" }
+    name { 'MyText' }
     user { nil }
   end
 end
