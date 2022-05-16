@@ -22,4 +22,20 @@
     --white: #fff;
     --black: #000;
     --red: #f00;
+    --font: 'Poppins', sans-serif;
   }
+
+  @font-face {
+    font-family: 'Poppins';
+    src: url('Poppins-Regular.ttf');
+ }
+
+  body {
+    min-height: 100vh;
+    overflow-y: auto;
+    box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.05);
+    background-color: var(--white);
+    font-family: var(--font);
+    transition: background ease-out 1s 0.1s;
+  }
+  
