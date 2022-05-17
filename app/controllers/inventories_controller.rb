@@ -12,7 +12,7 @@ class InventoriesController < ApplicationController
 
   def show
     @inventory = Inventory.find(params[:id])
-    @inventory_foods = InventoryFood.all.includes(:food).where(inventory_id: @inventory.id).order(created_at: :desc)
+    @inventory_foods = Food.all.joins("INNER JOIN inventory_foods ON foods.id = inventory_foods.food_id").order(created_at: :desc).select('foods.*, inventory_foods.quantity, inventory_foods.id as inventory_food_id').where(inventory_foods: {inventory_id: params[:id]}).with_attached_image
   end
 
   def create

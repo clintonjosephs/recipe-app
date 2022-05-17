@@ -9,7 +9,7 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>Name</th>
+        <th>Food</th>
         <th>Quantity</th>
         <th>Action</th>
       </tr>
@@ -19,15 +19,15 @@
         <tr>
           <td>
             <% if inventory_food.image.present? %>
-              <%= image_tag food.image, class: "bio-photo" %>
+              <%= image_tag inventory_food.image, class: "bio-photo" %>
             <% else %>
               <%= image_tag "https://nuwaay.com/wp-content/uploads/2022/01/default_256.png", class: "bio-photo" %>
             <% end %>
           </td>
           <td><%= inventory_food.name %></td>
-          <td><%= inventory_food.quantity %></td>
+          <td><%= inventory_food.quantity %><%= inventory_food.measurement_unit %></td>
           <td>
-            <a href="<%= inventory_inventory_food_path(@inventory.id, inventory_food.id) %>" data-confirm="Are you sure you want to delete <%= inventory_food.name %> from this inventory?" data-method="delete" class='btn btn-danger'>Delete</a>
+            <a href="<%= inventory_inventory_food_path(@inventory.id, inventory_food.inventory_food_id) %>" data-confirm="Are you sure you want to delete <%= inventory_food.name %> from this inventory?" data-method="delete" class='btn btn-danger'>Delete</a>
           </td>
         </tr>
       <% end %>
