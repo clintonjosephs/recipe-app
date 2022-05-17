@@ -1,0 +1,26 @@
+<h4> All inventories </h4>
+<hr />
+<% if @inventories.empty? %>
+    <div class="row">
+        <div class="mb-3 col-md-8 offset-md-2 inventory-card shadow">
+            No inventories yet
+        </div>
+    </div>
+<% else %>
+ <% @inventories.each do |inventory| %>
+    <div class="row">
+        <div class="mb-3 col-md-8 offset-md-2 inventory-card shadow">
+            <div class="row p-2">
+                <div class="col-md-4">
+                    <h5>
+                        <%= inventory.name %>
+                    </h5>
+                </div>
+                <div class="col-md-8">
+                    <%= inventory.description %>
+                </div>
+            </div>
+        </div>
+    </div>
+ <% end %>
+<% end %>
