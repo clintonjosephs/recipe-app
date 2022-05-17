@@ -141,3 +141,8 @@ td img {
   color: var(--black);
   text-decoration: none;
 }
+
+.btn-accent {
+  background-color: var(--accent-color); 
+  color: var(--white);
+}

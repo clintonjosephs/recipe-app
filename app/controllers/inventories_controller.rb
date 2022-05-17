@@ -10,6 +10,11 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.new
   end
 
+  def show
+    @inventory = Inventory.find(params[:id])
+    @inventory_foods = InventoryFood.all.includes(:food).where(inventory_id: @inventory.id).order(created_at: :desc)
+  end
+
   def create
     inventory = Inventory.new(inventory_params)
     inventory.user_id = current_user.id

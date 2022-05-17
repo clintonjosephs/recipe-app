@@ -14,7 +14,7 @@
                 <%= form.label :price, "How would you describe this inventory" %>
             </div>
             <div class="form-group mt-3">
-                <%= form.submit 'Add Inventory', class: "btn", style: "background-color: var(--accent-color); color: var(--white);", data: {disable_with: "Loading..."} %>
+                <%= form.submit 'Add Inventory', class: "btn btn-accent", data: {disable_with: "Loading..."} %>
             </div>
         <% end %>
         <p class="card-text"><small class="text-muted">Updating as <%= current_user.name %></small></p>
