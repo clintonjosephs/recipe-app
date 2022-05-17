@@ -29,7 +29,20 @@ class InventoryFoodsController < ApplicationController
     @inventory = Inventory.find(params[:inventory_id])
   end
 
-  def destroy; end
+  def destroy
+
+    inventory_food_to_delete = InventoryFood.find(params[:id])
+    if inventory_food_to_delete.destroy
+      flash[:success] = 'Food removed from inventory.'
+    else
+      flash[:danger] = 'Food could not be removed from inventory because <ul class="error-list">'
+      inventory_food_to_delete.errors.full_messages.each do |msg|
+        flash[:danger] += "<li>#{msg}</li>"
+      end
+      flash[:danger] += '</ul>'
+    end
+    redirect_to inventory_path(params[:inventory_id])
+  end
 
   private
 
