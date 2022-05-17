@@ -6,8 +6,8 @@
         <p class="card-text">Add food items to the inventory to help calculate the market list </p>
         <%= form_with model: @inventory_food, url: inventory_inventory_foods_path, local: true do |form| %>
             <div class="form-floating mb-3">
-                <%= form.select :measurement_unit, @foods.map { |food| [food.name, food.id] }, {:include_blank => "-", :required => true}, {:class => 'form-control'} %>
-                <%= form.label :measurement_unit, "Choose food from the list to add *" %>
+                <%= form.select :food_id, @foods.map { |food| [food.name, food.id] }, {:include_blank => "-", :required => true}, {:class => 'form-control'} %>
+                <%= form.label :food_id, "Choose food from the list to add *" %>
             </div>
             <div class="form-floating mb-3">
                 <%= form.number_field :quantity, class: "form-control", required: true %>
