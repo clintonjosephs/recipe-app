@@ -71,3 +71,27 @@ body {
   align-items: center;
   margin-right: 5px;
 }
+
+.user-details {
+  font-size: small !important;
+}
+
+.link-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0;
+}
+
+.dropdown-menu li a {
+  color: var(--black) !important;
+}
+
+.navbar-toggler {
+  color: var(--black) !important;
+}
+
+.navbar-toggler:active {
+  border: none !important;
+}
