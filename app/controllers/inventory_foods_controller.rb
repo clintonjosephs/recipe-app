@@ -5,5 +5,6 @@ class InventoryFoodsController < ApplicationController
     def new
         @inventory_food = InventoryFood.new
         @foods = Food.all.where(user_id: current_user.id).order(name: :asc)
+        @inventory = Inventory.find(params[:inventory_id])
     end
 end
