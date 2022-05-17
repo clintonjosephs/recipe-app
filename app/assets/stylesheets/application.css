@@ -136,3 +136,8 @@ td img {
   -webkit-box-shadow: 0 0 3px #ccc !important;
   box-shadow: 0 0 35px #ccc !important;
 }
+
+.card-link {
+  color: var(--black);
+  text-decoration: none;
+}

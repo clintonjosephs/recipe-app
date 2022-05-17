@@ -1,4 +1,5 @@
 class InventoriesController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
   
   def index 
@@ -26,6 +27,18 @@ class InventoriesController < ApplicationController
   end
 
   def destroy
+    @inventories = Inventory.all.where(user_id: current_user.id).order(created_at: :desc)
+    inventory_to_delete = Inventory.find(params[:id])
+    if inventory_to_delete.destroy
+      flash.now[:success] = 'Inventory was successfully deleted.'
+    else
+      flash.now[:danger] = 'Inventory was not deleted because <ul class="error-list">'
+      new_food.errors.full_messages.each do |msg|
+        flash.now[:danger] += "<li>#{msg}</li>"
+      end
+      flash.now[:danger] += '</ul>'
+    end
+    render :index
   end
 
   private
