@@ -30,7 +30,6 @@ class InventoryFoodsController < ApplicationController
   end
 
   def destroy
-
     inventory_food_to_delete = InventoryFood.find(params[:id])
     if inventory_food_to_delete.destroy
       flash[:success] = 'Food removed from inventory.'
