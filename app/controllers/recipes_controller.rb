@@ -2,7 +2,6 @@ class RecipesController < ApplicationController
   def index
     @user = current_user
     @recipes = @user.recipes.all
-    # @foods = Food.all
   end
 
   def show
@@ -12,6 +11,7 @@ class RecipesController < ApplicationController
   def new
     @user = current_user
     @recipe = @user.recipes.new
+    # @foods = Food.find(current_user.id)
   end
 
   def create

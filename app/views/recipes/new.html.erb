@@ -1,17 +1,30 @@
-<%= form_with model: @recipe do |f| %>
-<%= f.label :image, "Image" %>
-<%= f.file_field :image, class: 'form-control' %>
+<div class="row g-3 p-3">
+        <%= form_with model: @recipe do |f| %>
+    <div class="col-md-6">
+        <%= f.label :image, "Image" %>
+        <%= f.file_field :image, class: 'form-control' %>
+    </div>
 
-<%= f.label :name, "Name" %>
-<%= f.text_field :name, class: 'form-control' %>
-
-<%= f.label :preparation_time, "PreparationTime" %>
-<%= f.text_field :preparation_time, class: 'form-control' %>
-
-<%= f.label :description, "Description" %>
-<%= f.text_area :description, class: 'form-control' %>
-
-<%= f.label :cooking_time, "CookingTime" %>
-<%= f.text_field :cooking_time, class: 'form-control' %>
-<%= f.submit "Submit" %>
-<% end %>
+        <div class="form-check form-switch">
+            <%= f.label :is_public, "Public", class: "form-check-label" %>
+            <%= f.check_box :is_public, class: "form-check-input" %>
+        </div>
+    <div class="col-md-6">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :preparation_time, "PreparationTime" %>
+        <%= f.text_field :preparation_time, class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :description, "Description" %>
+        <%= f.text_area :description, class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+        <%= f.label :cooking_time, "CookingTime" %>
+        <%= f.text_field :cooking_time, class: 'form-control' %>
+    </div>
+        <%= f.submit "Submit" %>
+        <% end %>
+</div>
