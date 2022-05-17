@@ -95,3 +95,20 @@ body {
 .navbar-toggler:active {
   border: none !important;
 }
+
+
+div.background {
+  background: url(https://thumbs.dreamstime.com/b/set-different-food-items-7402256.jpg) repeat;
+  background-size: cover;
+}
+
+div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  opacity: 0.9;
+}
+
+div.transbox p {
+  margin: 5%;
+  font-weight: bold;
+}
