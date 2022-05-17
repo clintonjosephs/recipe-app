@@ -1,0 +1,17 @@
+<%= form_with model: @recipe do |f| %>
+<%= f.label :image, "Image" %>
+<%= f.file_field :image, class: 'form-control' %>
+
+<%= f.label :name, "Name" %>
+<%= f.text_field :name, class: 'form-control' %>
+
+<%= f.label :preparation_time, "PreparationTime" %>
+<%= f.text_field :preparation_time, class: 'form-control' %>
+
+<%= f.label :description, "Description" %>
+<%= f.text_area :description, class: 'form-control' %>
+
+<%= f.label :cooking_time, "CookingTime" %>
+<%= f.text_field :cooking_time, class: 'form-control' %>
+<%= f.submit "Submit" %>
+<% end %>

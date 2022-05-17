@@ -2,6 +2,8 @@
 
 <%= image_tag current_user.image.variant(resize_to_fill: [150, nil]) ? current_user.image : 'https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805__340.png', class: "rounded-circle mr-2" if current_user %>
 
+<%= link_to "Add Recipe", new_recipe_path(@recipes)%>
+
 
 <% @recipes.each do |recipe| %>
     <%= link_to recipe.name, recipe_path(recipe.id) %>

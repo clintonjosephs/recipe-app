@@ -1,6 +1,8 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    @user = current_user
+    @recipes = @user.recipes.all
+    # @foods = Food.all
   end
 
   def show
@@ -8,27 +10,40 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @user = current_user
+    @recipe = @user.recipes.new
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-    if @recipe.save
-      redirect_to @recipe
-    else
-      render 'new'
+    @user = current_user
+    @recipe = @user.recipes.new(recipe_params)
+    respond_to do |format|
+      format.html do
+        if @recipe.save
+          flash[:success] = 'Recipe created successfully'
+          redirect_to recipes_url
+        else
+          flash.now[:error] = 'Error: Recipe could not be created'
+          render :new
+        end
+      end
     end
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
+    @user = current_user
+    @recipe = @user.recipes.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_path
+
+    respond_to do |format|
+      format.html { redirect_to recipe_path, notice: 'Recipe was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :user_id)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :public, :description, :image)
   end
 end

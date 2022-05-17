@@ -13,14 +13,14 @@ Food.create(user_id:1, price:"$60", name:"Cake", measurement_unit:"8kg")
 Food.create(user_id:1, price:"$30", name:"Fried rice", measurement_unit:"5kg")
 Food.create(user_id:1, price:"$10", name:"Roasted meat", measurement_unit:"1kg")
 
-Recipe.create(name:"Nyama choma", preparation_time:"2 hours", cooking_time:"1 hour", description:"Good food", public:true, user_id:1)
-Recipe.create(name:"Chicken Shawama", preparation_time:"3 hours", cooking_time:"1 hour", description:"Tastes yummy", public:true, user_id:1)
-Recipe.create(name:"Fried Rice", preparation_time:"2 hours", cooking_time:"1 hour", description:"Good food", public:true, user_id:1)
-Recipe.create(name:"French Rice", preparation_time:"1 hour", cooking_time:"2 hours", description:"Nice taste", public:true, user_id:1)
-Recipe.create(name:"Eggs", preparation_time:"1 hour", cooking_time:"1 hour", description:"Good taste", public:true, user_id:1)  
-Recipe.create(name:"Chicken", preparation_time:"2 hours", cooking_time:"1 hour", description:"Good taste", public:true, user_id:1)
+# Recipe.create(name:"Nyama choma", preparation_time:"2 hours", cooking_time:"1 hour", description:"Good food", public:true, user_id:1)
+# Recipe.create(name:"Chicken Shawama", preparation_time:"3 hours", cooking_time:"1 hour", description:"Tastes yummy", public:true, user_id:1)
+# Recipe.create(name:"Fried Rice", preparation_time:"2 hours", cooking_time:"1 hour", description:"Good food", public:true, user_id:1)
+# Recipe.create(name:"French Rice", preparation_time:"1 hour", cooking_time:"2 hours", description:"Nice taste", public:true, user_id:1)
+# Recipe.create(name:"Eggs", preparation_time:"1 hour", cooking_time:"1 hour", description:"Good taste", public:true, user_id:1)  
+# Recipe.create(name:"Chicken", preparation_time:"2 hours", cooking_time:"1 hour", description:"Good taste", public:true, user_id:1)
 
-RecipeFood.create(quantity:"10kg", food_id:1, recipe_id:1)
+# RecipeFood.create(quantity:"10kg", food_id:1, recipe_id:1)
 
 
 

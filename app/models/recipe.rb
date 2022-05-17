@@ -5,4 +5,6 @@ class Recipe < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :user_id, presence: true
+
+  has_one_attached :image
 end
