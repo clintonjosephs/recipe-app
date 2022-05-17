@@ -24,7 +24,7 @@
           <td><%= food.measurement_unit %></td>
           <td><%= food.price %></td>
           <td>
-            <%= link_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <a href="<%= food_path(food.id) %>" data-confirm="Are you sure you want to delete <%= food.name %>?" data-method="delete" class='btn btn-danger'>Delete</a>
           </td>
         </tr>
       <% end %>

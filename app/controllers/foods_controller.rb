@@ -1,16 +1,15 @@
 class FoodsController < ApplicationController
-  
+  before_action :authenticate_user!
+   
   def index
-    @foods = Food.all.order(created_at: :desc).with_attached_image
+    @foods = Food.all.where(user_id: current_user.id).order(created_at: :desc).with_attached_image
   end
 
   def new
     @food = Food.new
-    @measurement_units = units
   end
 
   def create
-    @measurment_units = units
     new_food = Food.new()
     new_food.name = food_params[:name]
     new_food.price = food_params[:price]
@@ -20,24 +19,35 @@ class FoodsController < ApplicationController
 
     if new_food.save
       flash.now[:success] = 'Food was successfully created.'
-      render :new
     else
       flash.now[:danger] = 'Food was not created because <ul class="error-list">'
       new_food.errors.full_messages.each do |msg|
         flash.now[:danger] += "<li>#{msg}</li>"
       end
       flash.now[:danger] += '</ul>'
-      render :new
     end
+    render :new
   end
 
-  def units
-   [['grams', 'g'], ['kilograms', 'kg'], ['milligrams', 'ml'], ['liter', 'l'], ['ounces', 'oz'], ['pound', 'lb'], ['cup', 'cup'], ['pint', 'pint'], ['quart', 'quart'], ['gallon', 'gallon']]
+  def destroy
+    @foods = Food.all.where(user_id: current_user.id).order(created_at: :desc).with_attached_image
+
+    food_to_delete = Food.find(params[:id])
+    if food_to_delete.destroy
+      flash.now[:success] = 'Food was successfully deleted.'
+    else
+      flash.now[:danger] = 'Food was not deleted because <ul class="error-list">'
+      new_food.errors.full_messages.each do |msg|
+        flash.now[:danger] += "<li>#{msg}</li>"
+      end
+      flash.now[:danger] += '</ul>'
+    end
+    render :index
   end
 
   def food_params
     params.require(:food).permit(:name, :measurment, :m_unit, :price, :image)
   end
 
-  private :food_params, :units
+  private :food_params
 end

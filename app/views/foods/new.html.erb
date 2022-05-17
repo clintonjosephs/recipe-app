@@ -18,7 +18,7 @@
                         <%= form.label :measurment, "Measurement *" %>
                     </div>
                     <div class="form-floating mb-3">
-                        <%= form.select :m_unit, @measurement_units, {:include_blank => "-", :required => true}, {:class => 'form-control'} %>
+                        <%= form.select :m_unit, [['grams', 'g'], ['kilograms', 'kg'], ['milligrams', 'ml'], ['liter', 'l'], ['ounces', 'oz'], ['pound', 'lb'], ['cup', 'cup'], ['pint', 'pint'], ['quart', 'quart'], ['gallon', 'gallon']], {:include_blank => "-", :required => true}, {:class => 'form-control'} %>
                         <%= form.label :m_unit, "Choose measuring unit *" %>
                     </div>
                     <div class="form-floating mb-3">
