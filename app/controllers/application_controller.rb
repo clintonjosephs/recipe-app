@@ -3,8 +3,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :update_allowed_parameters, if: :devise_controller?
+  layout :layout_by_resource
 
-  protected
+  def layout_by_resource
+    if devise_controller?
+      'devise'
+    else
+      'application'
+    end
+  end
 
   def update_allowed_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
@@ -14,4 +21,8 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :password, :password_confirmation, :email, :current_password, :image)
     end
   end
+
+  protected :update_allowed_parameters
+
+  private :layout_by_resource
 end

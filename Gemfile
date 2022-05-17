@@ -27,6 +27,8 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+
 # rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
 
