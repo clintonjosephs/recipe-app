@@ -6,11 +6,8 @@
 <% @recipes.each do |recipe| %>
     <%= link_to recipe.name, recipe_path(recipe.id) %>
     <%= recipe.description %>
-    <%= recipe.preparation_time %>
-    <%= recipe.cooking_time %>
     <%= link_to "Delete", recipe_path(recipe.id), method: :delete, data: { confirm: "Are you sure?" } %>
     <%= link_to "Show", recipe_path(recipe.id) %>
-    <%= link_to "Back", recipes_path %>
 <% end %>
 
 
