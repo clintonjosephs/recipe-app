@@ -1,6 +1,8 @@
 class FoodsController < ApplicationController
   
-  def index; end
+  def index
+    @foods = Food.all.order(created_at: :desc).with_attached_image
+  end
 
   def new
     @food = Food.new

@@ -112,3 +112,9 @@ div.transbox p {
   margin: 5%;
   font-weight: bold;
 }
+
+td img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

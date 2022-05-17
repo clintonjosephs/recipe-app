@@ -1,10 +1,35 @@
-<div class="container">
-<div class="card">
-  <div class="card-header">
-    <h1>RecipeApp</h1>
-  </div>
-  <div class="card-body">
-    <span>Samuel test test test.</span>
-  </div>
+<h5 class="card-title">List of foods</h5>
+<div class="table-responsive">
+  <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Measurement</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td>
+            <% if food.image.present? %>
+              <%= image_tag food.image, class: "bio-photo" %>
+            <% else %>
+              <%= image_tag "https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805__340.png", class: "bio-photo" %>
+            <% end %>
+          </td>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= food.price %></td>
+          <td>
+            <%= link_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+  </table>
 </div>
