@@ -1,8 +1,8 @@
 class InventoriesController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
-  
-  def index 
+
+  def index
     @inventories = Inventory.all.where(user_id: current_user.id).order(created_at: :desc)
   end
 
@@ -12,7 +12,9 @@ class InventoriesController < ApplicationController
 
   def show
     @inventory = Inventory.find(params[:id])
-    @inventory_foods = Food.all.joins("INNER JOIN inventory_foods ON foods.id = inventory_foods.food_id").order(created_at: :desc).select('foods.*, inventory_foods.quantity, inventory_foods.id as inventory_food_id').where(inventory_foods: {inventory_id: params[:id]}).with_attached_image
+    @inventory_foods = Food.all.joins('INNER JOIN inventory_foods ON foods.id = inventory_foods.food_id')
+      .order(created_at: :desc).select('foods.*, inventory_foods.quantity, inventory_foods.id as inventory_food_id')
+      .where(inventory_foods: { inventory_id: params[:id] }).with_attached_image
   end
 
   def create
