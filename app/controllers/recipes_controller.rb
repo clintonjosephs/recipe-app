@@ -5,7 +5,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @user = current_user
+    @recipe = @user.recipes.all
   end
 
   def new
@@ -36,7 +37,7 @@ class RecipesController < ApplicationController
     @recipe.destroy
 
     respond_to do |format|
-      format.html { redirect_to recipe_path, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to recipe_path, notice: 'Recipe was successfully deleted.' }
       format.json { head :no_content }
     end
   end

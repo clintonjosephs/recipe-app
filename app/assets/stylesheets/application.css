@@ -117,3 +117,8 @@ td img {
   margin-left: auto;
   margin-right: auto;
 }
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+}

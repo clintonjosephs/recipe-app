@@ -1,30 +1,41 @@
-<div class="row g-3 p-3">
-        <%= form_with model: @recipe do |f| %>
-    <div class="col-md-6">
-        <%= f.label :image, "Image" %>
-        <%= f.file_field :image, class: 'form-control' %>
-    </div>
+<div class="row">
+    <div class="card mb-3 col-md-8 offset-md-2">
+    <div class="row g-0">
+        <div class="col-md-12 background">
+            <div class="card-body transbox">
+                <h5 class="card-title">Add recipe to your store</h5>
+                <%= form_with model: @recipe do |f| %>
+                    <div class="form-floating mb-3">
+                        <%= f.file_field :image, class: 'form-control' %>
+                        <%= f.label :image, 'Image if any', class: 'p-2' %>
+                    </div>
 
-        <div class="form-check form-switch">
-            <%= f.label :is_public, "Public", class: "form-check-label" %>
-            <%= f.check_box :is_public, class: "form-check-input" %>
+                    <div class="form-check form-switch">
+                        <%= f.label :is_public, "Make Public", class: "form-check-label p-2" %>
+                        <%= f.check_box :is_public, class: "form-check-input p-2" %>
+                    </div>
+                <div class="form-floating mb-3">
+                    <%= f.label :name, "Name" %>
+                    <%= f.text_field :name, class: 'form-control' %>
+                </div>
+                <div class="form-floating mb-3">
+                    <%= f.label :preparation_time, "PreparationTime" %>
+                    <%= f.text_field :preparation_time, class: 'form-control' %>
+                </div>
+                <div class="form-floating mb-3">
+                    <%= f.label :description, "Description" %>
+                    <%= f.text_area :description, class: 'form-control' %>
+                </div>
+                <div class="form-floating mb-3">
+                    <%= f.label :cooking_time, "CookingTime" %>
+                    <%= f.text_field :cooking_time, class: 'form-control' %>
+                </div>
+                    <div class="form-group mt-3">
+                        <%= f.submit '🥣 Add Food', class: "btn", style: "background-color: var(--primary-color); color: var(--white);", data: {disable_with: "Loading..."} %>
+                    </div>
+                <% end %>
+           </div>
         </div>
-    <div class="col-md-6">
-        <%= f.label :name, "Name" %>
-        <%= f.text_field :name, class: 'form-control' %>
     </div>
-    <div class="col-md-6">
-        <%= f.label :preparation_time, "PreparationTime" %>
-        <%= f.text_field :preparation_time, class: 'form-control' %>
     </div>
-    <div class="col-md-6">
-        <%= f.label :description, "Description" %>
-        <%= f.text_area :description, class: 'form-control' %>
-    </div>
-    <div class="col-md-6">
-        <%= f.label :cooking_time, "CookingTime" %>
-        <%= f.text_field :cooking_time, class: 'form-control' %>
-    </div>
-        <%= f.submit "Submit" %>
-        <% end %>
 </div>
