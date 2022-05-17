@@ -14,6 +14,11 @@
  *= require_self
  */
 
+ * {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --primary-color: #f89223;
   --neutral-color-1: #8c8e91;
@@ -37,4 +42,21 @@ body {
   background-color: var(--white);
   font-family: var(--font);
   transition: background ease-out 1s 0.1s;
+}
+
+.navbar {
+  color: var(--white);
+}
+
+.navbar a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: var(--neutral-color-2);
+}
+
+.navbar a:active {
+  color: var(--neutral-color-2) !important;
 }
