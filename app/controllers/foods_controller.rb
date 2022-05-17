@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   before_action :authenticate_user!
-   
+
   def index
     @foods = Food.all.where(user_id: current_user.id).order(created_at: :desc).with_attached_image
   end
@@ -10,7 +10,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    new_food = Food.new()
+    new_food = Food.new
     new_food.name = food_params[:name]
     new_food.price = food_params[:price]
     new_food.measurement_unit = "#{food_params[:measurment]} #{food_params[:m_unit]}"

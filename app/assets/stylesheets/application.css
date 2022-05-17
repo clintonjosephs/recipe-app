@@ -14,7 +14,7 @@
  *= require_self
  */
 
- * {
+* {
   margin: 0;
   padding: 0;
 }
@@ -53,6 +53,10 @@ body {
   text-decoration: none;
 }
 
+.dropdown-menu li a {
+  color: var(--black) !important;
+}
+
 .navbar a:hover {
   color: var(--neutral-color-2);
 }
@@ -84,10 +88,6 @@ body {
   padding: 0;
 }
 
-.dropdown-menu li a {
-  color: var(--black) !important;
-}
-
 .navbar-toggler {
   color: var(--black) !important;
 }
@@ -96,7 +96,6 @@ body {
   border: none !important;
 }
 
-
 div.background {
   background: url(https://thumbs.dreamstime.com/b/set-different-food-items-7402256.jpg) repeat;
   background-size: cover;
@@ -104,7 +103,7 @@ div.background {
 
 div.transbox {
   margin: 30px;
-  background-color: #ffffff;
+  background-color: #fff;
   opacity: 0.9;
 }
 
@@ -113,7 +112,7 @@ div.transbox p {
   font-weight: bold;
 }
 
-td img{
+td img {
   display: block;
   margin-left: auto;
   margin-right: auto;

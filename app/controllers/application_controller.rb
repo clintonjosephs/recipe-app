@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     if devise_controller?
-      "devise"
+      'devise'
     else
-      "application"
+      'application'
     end
   end
 
@@ -25,6 +25,4 @@ class ApplicationController < ActionController::Base
   protected :update_allowed_parameters
 
   private :layout_by_resource
-
-
 end
