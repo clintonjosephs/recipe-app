@@ -6,23 +6,27 @@
                 <h5 class="card-title">Add Food to your store</h5>
                 <%= form_with model: @food, url: foods_path, local: true do |form| %>
                     <div class="form-floating mb-3">
+                        <%= form.file_field :image, class: 'form-control' %>
+                        <%= form.label :image, 'Image if any', class: 'p-2' %>
+                    </div>
+                    <div class="form-floating mb-3">
                         <%= form.text_field :name, class: "form-control", required: true %>
-                        <%= form.label :name, "Name of Food" %>
+                        <%= form.label :name, "Name of Food *" %>
                     </div>
                     <div class="form-floating mb-3">
                         <%= form.number_field :measurment, class: "form-control", required: true %>
-                        <%= form.label :measurment, "Measurement" %>
+                        <%= form.label :measurment, "Measurement *" %>
                     </div>
                     <div class="form-floating mb-3">
                         <%= form.select :m_unit, @measurement_units, {:include_blank => "-", :required => true}, {:class => 'form-control'} %>
-                        <%= form.label :m_unit, "Choose measuring unit" %>
+                        <%= form.label :m_unit, "Choose measuring unit *" %>
                     </div>
                     <div class="form-floating mb-3">
                         <%= form.number_field :m_unit, class: "form-control", required: true %>
-                        <%= form.label :price, "Price in dollars" %>
+                        <%= form.label :price, "Price in dollars *" %>
                     </div>
                     <div class="form-group mt-3">
-                        <%= form.submit "Add Food", class: "btn-info form-control", data: {disable_with: "Loading..."} %>
+                        <%= form.submit '🥣 Add Food', class: "btn", style: "background-color: var(--primary-color); color: var(--white);", data: {disable_with: "Loading..."} %>
                     </div>
                 <% end %>
                 <p class="card-text"><small class="text-muted">updating as <%= current_user.name %></small></p>
