@@ -1,0 +1,39 @@
+<%= link_to ' << Back to all inventories', inventories_path, class: "btn btn-outline-success mb-2" %> 
+<h4><%= @inventory.name %></h4>
+
+<div class="table-responsive mt-1">
+<div style="float: right;">
+    <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> Add food to inventory'.html_safe, new_inventory_inventory_food_path(@inventory.id), class: "btn btn-accent mb-2" %> 
+</div>
+  <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @inventory_foods.each do |inventory_food| %>
+        <tr>
+          <td>
+            <% if inventory_food.image.present? %>
+              <%= image_tag inventory_food.image, class: "bio-photo" %>
+            <% else %>
+              <%= image_tag "https://nuwaay.com/wp-content/uploads/2022/01/default_256.png", class: "bio-photo" %>
+            <% end %>
+          </td>
+          <td><%= inventory_food.name %></td>
+          <td><%= inventory_food.quantity %><%= inventory_food.measurement_unit %></td>
+          <td>
+            <a href="<%= inventory_inventory_food_path(@inventory.id, inventory_food.inventory_food_id) %>" data-confirm="Are you sure you want to delete <%= inventory_food.name %> from this inventory?" data-method="delete" class='btn btn-danger'>Delete</a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+  </table>
+</div>
+
