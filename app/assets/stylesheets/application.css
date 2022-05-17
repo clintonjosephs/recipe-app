@@ -60,3 +60,14 @@ body {
 .navbar a:active {
   color: var(--neutral-color-2) !important;
 }
+
+.bio-photo {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
