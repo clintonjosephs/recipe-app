@@ -1,41 +1,39 @@
-<div class="row">
-    <div class="card mb-3 col-md-8 offset-md-2">
-    <div class="row g-0">
-        <div class="col-md-12 background">
-            <div class="card-body transbox">
-                <h5 class="card-title">Add recipe to your store</h5>
-                <%= form_with model: @recipe, url: recipes_path do |f| %>
-                    <div class="form-floating mb-3">
-                        <%= f.file_field :image, class: 'form-control' %>
-                        <%= f.label :image, 'Image if any', class: 'p-2' %>
-                    </div>
-
-                    <div class="form-check form-switch">
-                        <%= f.label :public, "Make Public", class: "form-check-label p-2" %>
-                        <%= f.check_box :public, class: "form-check-input p-2" %>
-                    </div>
-                <div class="form-floating mb-3">
-                    <%= f.label :name, "Name" %>
-                    <%= f.text_field :name, class: 'form-control' %>
+<div class="row  container-fluid">
+    <div class="mb-3 col-md-8 offset-md-2 inventory-card shadow">
+        <%= image_tag("recipe-box-banner.jpeg", class: "card-img-top") %>
+        <div class="card-body">
+        <h5 class="card-title">😊 Create a new recipe!!</h5>
+        <p class="card-text"> Would'nt it be nice to store a recipe of your favourite food? Go ahead!</p>
+            <%= form_with model: @recipe, url: recipes_path do |f| %>
+                <div class="mb-3">
+                    <%= f.file_field :image, class: 'form-control' %>
+                    <%= f.label :image, 'Choose an image that would appear as banner for recipe', class: 'mb-2' %>
                 </div>
                 <div class="form-floating mb-3">
-                    <%= f.label :preparation_time, "PreparationTime" %>
-                    <%= f.text_field :preparation_time, class: 'form-control' %>
+                    <%= f.text_field :name, class: 'form-control', required: true %>
+                    <%= f.label :name, "Recipe Name*" %>
                 </div>
                 <div class="form-floating mb-3">
-                    <%= f.label :description, "Description" %>
+                    <%= f.number_field :preparation_time, class: 'form-control', required: true %>
+                    <%= f.label :preparation_time, "Preparation Time in mins*" %>
+                </div>
+                <div class="form-floating mb-3">
+                    <%= f.number_field :cooking_time, class: 'form-control', required: true %>
+                    <%= f.label :cooking_time, "Cooking Time in mins*" %>
+                </div>
+                <div class="form-floating mb-3">
                     <%= f.text_area :description, class: 'form-control' %>
+                    <%= f.label :description, "Description" %>
                 </div>
-                <div class="form-floating mb-3">
-                    <%= f.label :cooking_time, "CookingTime" %>
-                    <%= f.text_field :cooking_time, class: 'form-control' %>
+                <div class="form-check form-switch">
+                    <%= f.check_box :public, class: "form-check-input" %>
+                    <%= f.label :public, 'Mark public', class: "form-check-label" %> <br />
+                    <i style="color: var(--primary-color)"> This allows other users to see your recipe</i>
                 </div>
-                    <div class="form-group mt-3">
-                        <%= f.submit '🥣 Add Food', class: "btn", style: "background-color: var(--primary-color); color: var(--white);", data: {disable_with: "Loading..."} %>
-                    </div>
-                <% end %>
-           </div>
+                <div class="form-group mt-3">
+                    <%= f.submit '🥣 Create Recipe', class: "btn", style: "background-color: var(--primary-color); color: var(--white);", data: {disable_with: "Loading..."} %>
+                </div>
+            <% end %>
         </div>
-    </div>
     </div>
 </div>

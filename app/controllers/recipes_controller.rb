@@ -1,4 +1,7 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
+
   def index
     @recipes = Recipe.all.where(user_id: current_user).order(created_at: :desc).with_attached_image
   end
@@ -17,13 +20,20 @@ class RecipesController < ApplicationController
   def create
     @user = current_user
     @recipe = @user.recipes.new(recipe_params)
+    @recipe.preparation_time = "#{params[:recipe][:preparation_time]} minute(s)"
+    @recipe.cooking_time = "#{params[:recipe][:cooking_time]} minute(s)"
+
     respond_to do |format|
       format.html do
         if @recipe.save
           flash[:success] = 'Recipe created successfully'
           redirect_to recipes_url
         else
-          flash.now[:error] = 'Error: Recipe could not be created'
+          flash.now[:danger] = 'Recipe was not created because <ul class="error-list">'
+          @recipe.errors.full_messages.each do |msg|
+            flash.now[:danger] += "<li>#{msg}</li>"
+          end
+          flash.now[:danger] += '</ul>'
           render :new
         end
       end
@@ -31,14 +41,17 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @user = current_user
-    @recipe = @user.recipes.find(params[:id])
-    @recipe.destroy
-
-    respond_to do |format|
-      format.html { redirect_to recipe_path, notice: 'Recipe was successfully deleted.' }
-      format.json { head :no_content }
+    recipe = Recipe.find(params[:id])
+    if recipe.destroy
+      flash[:success] = 'Recipe deleted successfully'
+    else
+      flash.now[:danger] = 'Recipe deleted because <ul class="error-list">'
+      recipe.errors.full_messages.each do |msg|
+        flash[:danger] += "<li>#{msg}</li>"
+      end
+      flash[:danger] += '</ul>'
     end
+    redirect_to recipes_url
   end
 
   private

@@ -1,22 +1,14 @@
-<section class="container">
-<h5 class="card-title">List of Recipes</h5>
-<div class="row-md-4">
-    <div class="card" style="width: 18rem;">
-        <% @recipes.each do |recipe| %>
-        <% if recipe.image.present? %>
-            <%= image_tag recipe.image, class: "card-img-top" %>
-        <% else %>
-            <%= image_tag "https://nuwaay.com/wp-content/uploads/2022/01/default_256.png", class: "card-img-top recipe-image" %>
-        <% end %>
-        <div class="card-footer text-muted">
-            <%= link_to recipe.name, recipe_path(recipe.id) %>
-                <%= recipe.description %></p>
-                <%= link_to "Delete", recipe_path(recipe.id), method: :delete, data: { confirm: "Are you sure?" } %>
-                <%= link_to "Show", recipe_path(recipe.id) %>
-            <% end %>
-        </div>
-    </div>
-</section>
+
+<h5 class="mb-2">Your Recipies</h5>
+<hr />
+<div class="row">
+    <% @recipes.each do |recipe| %>
+     <%= render partial: "shared/recipe_display", locals: {recipe: recipe} %>
+    <% end %>
+</div>
+
+
+
 
 
 
