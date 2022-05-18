@@ -7,14 +7,20 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @recipe = @user.recipes.find(params[:id])
-    @recipefoods = RecipeFood.all
+    data = Recipe.where(id: params[:id]).with_attached_image
+    @recipe = data[0]
+    @recipe_foods = Food.all.joins('INNER JOIN recipe_foods ON foods.id = recipe_foods.food_id')
+      .order(created_at: :desc).select('foods.*, recipe_foods.quantity, recipe_foods.id as recipe_foods_id')
+      .where(recipe_foods: { recipe_id: params[:id] }).with_attached_image
   end
 
   def new
     @user = current_user
     @recipe = @user.recipes.new
+  end
+
+  def update
+    Recipe.find(params[:id]).update(public: params[:recipe][:public])
   end
 
   def create
@@ -52,6 +58,9 @@ class RecipesController < ApplicationController
       flash[:danger] += '</ul>'
     end
     redirect_to recipes_url
+  end
+
+  def public_recipes
   end
 
   private

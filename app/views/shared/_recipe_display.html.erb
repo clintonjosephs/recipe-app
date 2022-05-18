@@ -15,6 +15,9 @@
             <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe, recipe_path(recipe.id), class: 'btn btn-outline-info' %>
             <%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i> Delete'.html_safe, recipe_path(recipe.id), method: :delete, data: { confirm: "Delete recipe #{recipe.name}?" }, class: 'btn btn-outline-danger' if can? :destroy, recipe %>
         </p>
+        <% if current_user %>
+            <small class="text-muted" style="float:right"><%= recipe.public ? '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe : '' %></small>
+        <% end %>
     </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-class RecipeFoodController < ApplicationController
+class RecipeFoodsController < ApplicationController
     before_action :authenticate_user!
     
     def index

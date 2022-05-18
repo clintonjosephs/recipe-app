@@ -1,21 +1,36 @@
+<%= link_to ' << Public Recipes', public_recipes_path, class: "btn btn-outline mb-2"%> 
+<%= link_to ' << Recipes', recipes_path, class: "btn btn-outline mb-2" if current_user %> 
 <div class="container">
     <div class="card text-center ">
-        <h1><%= @recipe.name %></h1>
-        <div class="d-flex gap-3">
-        <div class="p-5">
-            <p class="text-start"><i class="fa fa-clock-o" aria-hidden="true"></i> Preparation time: <%= @recipe.preparation_time %></p>
-            <p class="text-start"><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time: <%= @recipe.cooking_time %></p> 
-        </div>
-        <div class="form-check form-switch">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Public</label>
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-        </div>
+        <h4 class="card-header" style="background: var(--primary-color); color: var(--white)">
+          <%= image_tag @recipe.image, class: "float-start bio-photo" if @recipe.image.present? %>
+          <%= @recipe.name %>
+        </h4>
+        <div class="row mx-5 mt-2">
+          <div class="col-md-9">
+              <p class="text-start"><i class="fa fa-clock-o" aria-hidden="true"></i> Preparation time: <%= @recipe.preparation_time %></p>
+              <p class="text-start"><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time: <%= @recipe.cooking_time %></p> 
+          </div>
+          <div class="col-md-3">
+              <%= form_with model: @recipe, url: recipe_path(@recipe.id), method: :patch, local: true do |form| %>
+                <div class="form-switch">
+                    <%= form.check_box :public, class: "form-check-input", onchange: 'this.form.submit()' %>
+                    <%= form.label :public, 'public', class: "form-check-label", checked: @recipe.public %> <br />
+                </div>
+              <% end %>
+          </div>
         </div>
     </div>
-
+    <div class="mt-4">
+        <%= link_to 'Generate shopping list', new_recipe_recipe_food_path(@recipe.id), class: "btn btn-outline-info mb-2 flex-start" %> 
+        <span style="float: right">
+          <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> Add food ingredient'.html_safe, new_recipe_recipe_food_path(@recipe.id), class: "btn btn-outline-success mb-2 flex-end" %> 
+        </span>
+    </div>
     <table class="table table-striped text-center">
     <thead>
       <tr>
+        <th>#</th>
         <th>Food</th>
         <th>Name</th>
         <th>Quantity</th>
@@ -24,18 +39,18 @@
       </tr>
     </thead>
     <tbody>
-      <% @recipefoods.includes(:food).each do |recipe_food| %>
+      <% @recipe_foods.each do |recipe_food| %>
         <tr>
             <td>
-                <% if recipe_food.food.image.present? %>
-                <%= image_tag recipe_food.food.image, class: "float-start bio-photo" %>
+                <% if recipe_food.image.present? %>
+                <%= image_tag recipe_food.image, class: "float-start bio-photo" %>
                 <% else %>
-                <%= image_tag "https://nuwaay.com/wp-content/uploads/2022/01/default_256.png", class: "bio-photo" %>
+                <%= image_tag "no-food-image.png", class: "bio-photo" %>
                 <% end %>
             </td>
-          <td><%= recipe_food.food.name %></td>
+          <td><%= recipe_food.name %></td>
           <td><%= recipe_food.quantity %></td>
-          <td>$<%= recipe_food.food.price %></td>
+          <td>$<%= recipe_food.price %></td>
           <td>
           <a href="<%= food_path(recipe_food.id) %>" data-confirm="Are you sure you want to delete <%= recipe_food.food.name %>?" data-method="delete" class='btn btn-danger'>Delete</a>
           </td>
