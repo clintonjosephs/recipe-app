@@ -36,12 +36,25 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 95vh;
   overflow-y: auto;
   box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.05);
   background-color: var(--white);
   font-family: var(--font);
   transition: background ease-out 1s 0.1s;
+  border: solid;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--neutral-color-1);
+  padding: 1rem;
+  text-align: center;
+  color: var(--neutral-color-2);
+  font-size: 0.8rem;
 }
 
 .navbar {
