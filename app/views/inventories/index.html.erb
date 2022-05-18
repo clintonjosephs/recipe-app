@@ -1,0 +1,36 @@
+<h4> All inventories (<%= @inventories.length %>)</h4>
+<hr />
+<% if @inventories.empty? %>
+    <div class="row">
+        <div class="mb-3 col-md-8 offset-md-2 inventory-card shadow">
+            No inventories yet
+        </div>
+    </div>
+<% else %>
+ <% @inventories.each do |inventory| %>
+    <%= link_to inventory_path(inventory.id), class: "card-link" do %>
+        <div class="row">
+            <div class="mb-3 col-md-8 offset-md-2 inventory-card shadow">
+                <div class="row p-3">
+                    <div class="col-md-4">
+                        <h5>
+                            <%= inventory.name %>
+                        </h5>
+                        <%= link_to inventory_path(inventory.id), class: "btn btn-primary" do %>
+                            <i class="fa fa-eye" aria-hidden="true"></i> View
+                        <% end %>
+                        <% if can? :destroy, inventory %>
+                            <a href="<%= inventory_path(inventory.id) %>" data-confirm="Delete inventory [<%= inventory.name %>]?" data-method="delete" class='btn btn-danger'>
+                                <i class="fa fa-trash trash shadow" aria-hidden="true"></i> Delete
+                            </a>
+                        <% end %>
+                    </div>
+                    <div class="col-md-8">
+                        <%= inventory.description %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+ <% end %>
+<% end %>

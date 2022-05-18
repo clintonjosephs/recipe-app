@@ -10,11 +10,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    new_food = Food.new
-    new_food.name = food_params[:name]
-    new_food.price = food_params[:price]
-    new_food.measurement_unit = "#{food_params[:measurment]} #{food_params[:m_unit]}"
-    new_food.image = food_params[:image]
+    new_food = Food.new(food_params)
     new_food.user_id = current_user.id
 
     if new_food.save
@@ -46,7 +42,7 @@ class FoodsController < ApplicationController
   end
 
   def food_params
-    params.require(:food).permit(:name, :measurment, :m_unit, :price, :image)
+    params.require(:food).permit(:name, :measurement_unit, :price, :image)
   end
 
   private :food_params

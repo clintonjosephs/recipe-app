@@ -5,8 +5,8 @@
       <tr>
         <th>#</th>
         <th>Name</th>
-        <th>Measurement</th>
-        <th>Price</th>
+        <th>Measurement Unit</th>
+        <th>Unit Price</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -24,7 +24,7 @@
           <td><%= food.measurement_unit %></td>
           <td><%= food.price %></td>
           <td>
-          <a href="<%= food_path(food.id) %>" data-confirm="Are you sure you want to delete <%= food.name %>?" data-method="delete" class='btn btn-danger'>Delete</a>
+            <a href="<%= food_path(food.id) %>" data-confirm="Are you sure you want to delete <%= food.name %>?" data-method="delete" class='btn btn-danger'>Delete</a>
           </td>
         </tr>
       <% end %>
