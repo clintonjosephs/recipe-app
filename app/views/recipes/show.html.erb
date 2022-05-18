@@ -30,9 +30,8 @@
     <table class="table table-striped text-center">
     <thead>
       <tr>
-        <th>#</th>
+        <th class="text-center">#</th>
         <th>Food</th>
-        <th>Name</th>
         <th>Quantity</th>
         <th>Value</th>
         <th>Action</th>
@@ -41,18 +40,18 @@
     <tbody>
       <% @recipe_foods.each do |recipe_food| %>
         <tr>
-            <td>
-                <% if recipe_food.image.present? %>
-                <%= image_tag recipe_food.image, class: "float-start bio-photo" %>
-                <% else %>
+          <td>
+              <% if recipe_food.image.present? %>
+                <%= image_tag recipe_food.image, class: "bio-photo" %>
+              <% else %>
                 <%= image_tag "no-food-image.png", class: "bio-photo" %>
-                <% end %>
-            </td>
+              <% end %>
+          </td>
           <td><%= recipe_food.name %></td>
           <td><%= recipe_food.quantity %></td>
-          <td>$<%= recipe_food.price %></td>
+          <td>$<%= recipe_food.price * recipe_food.quantity %></td>
           <td>
-          <a href="<%= food_path(recipe_food.id) %>" data-confirm="Are you sure you want to delete <%= recipe_food.food.name %>?" data-method="delete" class='btn btn-danger'>Delete</a>
+          <a href="<%= recipe_recipe_food_path(recipe_food.recipe_foods_id) %>" data-confirm="Are you sure you want to delete <%= recipe_food.name %>?" data-method="delete" class='btn btn-danger'>Delete</a>
           </td>
         </tr>
       <% end %>
