@@ -15,14 +15,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       <nav class="navbar navbar-expand-lg mb-3" style="background-color: var(--accent-color)">
         <div class="container">
-          <%= link_to "RecipeBook", public_recipes_path, :"data-turbolinks" => false, class: "navbar-brand display-6" %>
+          <%= link_to "RecipeBook", root_path, :"data-turbolinks" => false, class: "navbar-brand display-6" %>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa fa-bars" aria-hidden="true"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">    
               <li class="nav-item">
-                <%= link_to "Public Recipes", public_recipes_path, :"data-turbolinks" => false, class: "nav-link" %>
+                <%= link_to "Public Recipes", publics_path, :"data-turbolinks" => false, class: "nav-link" %>
               </li>
               <% if current_user %> 
                 <li class="nav-item dropdown">

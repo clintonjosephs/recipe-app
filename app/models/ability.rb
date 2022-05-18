@@ -10,6 +10,9 @@ class Ability
       can :destroy, Inventory do |inventory|
         inventory.user_id == user.id
       end
+      can :destroy, Recipe do |recipe|
+        recipe.user_id == user.id
+      end
     else
       can :read, :all
     end
