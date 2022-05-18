@@ -1,4 +1,4 @@
-<%= link_to ' << Public Recipes', public_recipes_path, class: "btn btn-outline mb-2"%> 
+<%= link_to ' << Public Recipes', root_path, class: "btn btn-outline mb-2"%> 
 <%= link_to ' << Recipes', recipes_path, class: "btn btn-outline mb-2" if current_user %> 
 <div class="container">
     <div class="card text-center ">
@@ -22,7 +22,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <%= link_to 'Generate shopping list', new_recipe_recipe_food_path(@recipe.id), class: "btn btn-outline-info mb-2 flex-start" %> 
+        <button type="button"class='btn btn-outline-primary mb-2 flex-start' data-bs-toggle="modal" data-bs-target="#listBackdrop">
+          <i class="fa fa-shopping-basket" aria-hidden="true"></i> Generate shopping list
+        </button>
         <span style="float: right">
           <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> Add food ingredient'.html_safe, new_recipe_recipe_food_path(@recipe.id), class: "btn btn-outline-success mb-2 flex-end" %> 
         </span>
@@ -65,4 +67,4 @@
     </tbody>
   </table>
 </div>
-
+<%= render partial: "shared/shopping_list_setup", locals: { list: @inventory_hash, recipe: @recipe.id } %>
