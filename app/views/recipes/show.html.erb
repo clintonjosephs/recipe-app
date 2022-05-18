@@ -51,7 +51,14 @@
           <td><%= recipe_food.quantity %></td>
           <td>$<%= recipe_food.price * recipe_food.quantity %></td>
           <td>
-          <a href="<%= recipe_recipe_food_path(recipe_food.recipe_foods_id) %>" data-confirm="Are you sure you want to delete <%= recipe_food.name %>?" data-method="delete" class='btn btn-danger'>Delete</a>
+          <a href="<%= edit_recipe_recipe_food_path(@recipe.id, recipe_food.recipe_foods_id) %>" class='btn btn-outline-primary'>
+            <i class="fa fa-pencil" aria-hidden="true"></i>  
+            Modify
+          </a>
+          <a href="<%= recipe_recipe_food_path(@recipe.id, recipe_food.recipe_foods_id) %>" data-confirm="Delete <%= recipe_food.name %> from this recipe?" data-method="delete" class='btn btn-outline-danger'>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            Delete
+          </a>
           </td>
         </tr>
       <% end %>

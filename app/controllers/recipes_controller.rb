@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:public_recipes]
   load_and_authorize_resource
 
   def index
@@ -58,9 +58,6 @@ class RecipesController < ApplicationController
       flash[:danger] += '</ul>'
     end
     redirect_to recipes_url
-  end
-
-  def public_recipes
   end
 
   private
