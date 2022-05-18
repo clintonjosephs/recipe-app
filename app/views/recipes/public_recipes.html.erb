@@ -1,0 +1,15 @@
+<div class="row">
+<h1>Public Recipes</h1>
+<% @recipes.each do |recipe|%>
+<div class="col-md-3">
+<div class="card m-3">
+    <div class="card-body">
+        <%= image_tag "https://nuwaay.com/wp-content/uploads/2022/01/default_256.png", class: "card-img-top" %>
+        <h5 class="card-title"><%= recipe.name %></h5>
+        <p class="card-text"><%= recipe.description %></p>
+        <a href="/recipes/<%= recipe.id %>" class="btn", style= "background-color: var(--primary-color); color: var(--white)">View Recipe</a>
+    </div>
+</div>
+</div>
+<% end %>
+</div>
