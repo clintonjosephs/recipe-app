@@ -1,10 +1,47 @@
 <div class="container">
     <div class="card text-center ">
         <h1><%= @recipe.name %></h1>
-        <div class="card-header d-flex">
-            <p><i class="fa fa-clock-o" aria-hidden="true"></i> Preparation time: <%= @recipe.preparation_time %></p>
-            <p><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time: <%= @recipe.cooking_time %></p>
+        <div class="d-flex gap-3">
+        <div class="p-5">
+            <p class="text-start"><i class="fa fa-clock-o" aria-hidden="true"></i> Preparation time: <%= @recipe.preparation_time %></p>
+            <p class="text-start"><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time: <%= @recipe.cooking_time %></p> 
+        </div>
+        <div class="form-check form-switch">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Public</label>
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        </div>
         </div>
     </div>
+
+    <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipefoods.includes(:food).each do |recipe_food| %>
+        <tr>
+            <td>
+                <% if recipe_food.food.image.present? %>
+                <%= image_tag recipe_food.food.image, class: "float-start bio-photo" %>
+                <% else %>
+                <%= image_tag "https://nuwaay.com/wp-content/uploads/2022/01/default_256.png", class: "bio-photo" %>
+                <% end %>
+            </td>
+          <td><%= recipe_food.food.name %></td>
+          <td><%= recipe_food.quantity %></td>
+          <td>$<%= recipe_food.food.price %></td>
+          <td>
+          <a href="<%= food_path(recipe_food.id) %>" data-confirm="Are you sure you want to delete <%= recipe_food.food.name %>?" data-method="delete" class='btn btn-danger'>Delete</a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 

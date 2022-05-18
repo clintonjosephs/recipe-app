@@ -4,7 +4,7 @@
         <div class="col-md-12 background">
             <div class="card-body transbox">
                 <h5 class="card-title">Add recipe to your store</h5>
-                <%= form_with model: @recipe do |f| %>
+                <%= form_with model: @recipe, url: recipes_path do |f| %>
                     <div class="form-floating mb-3">
                         <%= f.file_field :image, class: 'form-control' %>
                         <%= f.label :image, 'Image if any', class: 'p-2' %>

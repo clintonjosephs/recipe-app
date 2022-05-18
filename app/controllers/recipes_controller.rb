@@ -1,18 +1,17 @@
 class RecipesController < ApplicationController
   def index
-    @user = current_user
-    @recipes = @user.recipes.all
+    @recipes = Recipe.all.where(user_id: current_user).order(created_at: :desc).with_attached_image
   end
 
   def show
     @user = current_user
-    @recipe = @user.recipes.all
+    @recipe = @user.recipes.find(params[:id])
+    @recipefoods = RecipeFood.all
   end
 
   def new
     @user = current_user
     @recipe = @user.recipes.new
-    # @foods = Food.find(current_user.id)
   end
 
   def create
