@@ -1,0 +1,60 @@
+<div class="field pb-2">
+<%= f.label 'Profile Picture' %><br />
+<%= f.file_field :image, class: 'form-control' %>
+</div>
+
+<div class="field pb-2">
+<%= f.label :name %><br />
+<%= f.text_field :name, autofocus: true, autocomplete: "Full name", placeholder: 'Full name', class: 'form-control', :required => true %>
+</div>
+<div class="field pb-2">
+<%= f.label :email %><br />
+<%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', :required => true %>
+</div>
+
+<% if !edit %>
+    <div class="field  pb-2">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', :required => true%>
+    </div>
+
+    <div class="field pb-2">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+    </div>
+<% end %>
+
+<% if edit %>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Change Password
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <div class="field pb-2">
+            <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+            <% if @minimum_password_length %>
+                <em><%= @minimum_password_length %> characters minimum</em>
+            <% end %>
+        </div>
+        <div class="field pb-2">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
+</div>
+<% end %>
