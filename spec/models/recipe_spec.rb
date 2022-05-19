@@ -26,6 +26,12 @@ RSpec.describe Recipe, type: :model do
             expect(@recipe).to be_valid
         end
 
-       
+        it 'should not be valid without name' do
+            @recipe.name = nil
+            @recipe.description = 'Description'
+            expect(@recipe).to_not be_valid
+        end
+
+        
     end
 end
