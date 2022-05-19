@@ -59,10 +59,5 @@ RSpec.describe RecipeFood, type: :model do
       @recipe_food.quantity = nil
       expect(@recipe_food).to_not be_valid
     end
-
-    it 'should not be valid without user_id' do
-      @recipe_food.user_id = nil
-      expect(@recipe_food).to_not be_valid
-    end
   end
 end
