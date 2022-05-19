@@ -38,6 +38,9 @@ gem 'devise'
 # cancancan authorization gem
 gem 'cancancan', '~> 1.9'
 
+# asser_template has been extracted to a gem
+gem 'rails-controller-testing'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
