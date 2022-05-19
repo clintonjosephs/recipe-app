@@ -21,3 +21,20 @@
           </div>
         </div>
     </div>
+    <div class="mt-4">
+        <%= link_to 'Generate shopping list', new_recipe_recipe_food_path(@recipe.id), class: "btn btn-outline-info mb-2 flex-start" %> 
+        <span style="float: right">
+          <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i> Add food ingredient'.html_safe, new_recipe_recipe_food_path(@recipe.id), class: "btn btn-outline-success mb-2 flex-end" %> 
+        </span>
+    </div>
+    <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th class="text-center">#</th>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
