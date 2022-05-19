@@ -47,6 +47,11 @@ RSpec.describe Recipe, type: :model do
             expect(@recipe).to_not be_valid
         end
 
+        it 'should not be valid with name longer than 100 characters' do
+            @recipe.name = 'a' * 101
+            expect(@recipe).to_not be_valid
+        end
+
         
     end
 end
