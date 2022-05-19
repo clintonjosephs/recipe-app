@@ -1,0 +1,26 @@
+<div class="modal fade" id="listBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="listBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="listBackdropLabel">
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i> 
+            Generating Shopping List <br />
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with url: shopping_list_path, method: :get do |form| %>
+        <div class="modal-body">
+            <h6>Select Inventory to use</h6>
+            <%= form.select :inventory_id, list, {}, {:class => 'form-control'} %>
+            <%= form.hidden_field :recipe_id, value: recipe %>
+        </div>
+        <div class="modal-footer">
+            <%=button_tag type: 'submit', class: "btn btn-outline-success popover-test", title: "This gives you a list of items that you need to purchase to make your recipe based on store inventory", data: {disable_with: "Loading..."}, name: nil do %>
+                <i class="fa fa-list-ol" aria-hidden="true"></i> Get List
+            <% end %>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

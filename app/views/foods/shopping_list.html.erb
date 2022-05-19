@@ -1,0 +1,47 @@
+<%= link_to ' << Recipe', recipe_path(@recipe.id), class: "btn btn-outline-success mb-2" %> 
+<div class="card col-md-6 offset-md-3">
+  <div class="card-body">
+    <div class="container">
+      <p style="font-size: 30px; text-align:center; color: var(--primary-color)">Shopping list</p>
+      <div class="row">
+        <ul class="list-unstyled">
+          <li class="text-black"><%= @recipe.name %></li>
+          <li class="text-muted mt-1"><%= @inventory.name %></li>
+          <li class="text-black mt-1">Items to purchase: <%= @shopping_list.length %></li>
+          <li class="text-black mt-1">Total Cost: <%= "$#{@cost}" %></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-xl-5">
+            <b>Item</b>
+        </div>
+        <div class="col-xl-5">
+            <b>Quantity</b>
+        </div>
+        <div class="col-xl-2">
+            <b class="float-end">Price </b>
+        </div>
+        <hr>
+     </div>
+      <% @shopping_list.each do |food| %>
+        <div class="row">
+            <div class="col-xl-5">
+                <p><%= food.name %></p>
+            </div>
+            <div class="col-xl-5">
+                <p><%= "#{food.quantity} #{food.measurement_unit}" %></p>
+            </div>
+            <div class="col-xl-2">
+                <p class="float-end"> $<%= food.quantity * food.price %> </p>
+            </div>
+            <hr>
+        </div>
+     <% end %>
+      <div class="text-center" style="margin-top: 10px;">
+        <a onclick="window.print(); return false;" style="cursor:pointer"><u class="text-primary"><i class="fa fa-print" aria-hidden="true"></i>Print</u></a>
+        <p>Thank you for using our product</p>
+      </div>
+
+    </div>
+  </div>
+</div>

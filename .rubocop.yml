@@ -16,7 +16,7 @@ Metrics/MethodLength:
   Include:
     - "app/controllers/*"
     - "app/models/*"
-  Max: 20
+  Max: 25
 Metrics/AbcSize:
   Include:
     - "app/controllers/*"
