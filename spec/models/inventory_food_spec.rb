@@ -48,6 +48,11 @@ RSpec.describe InventoryFood, type: :model do
             expect(@inventory_food).to_not be_valid
         end
 
+        it 'should not be valid without quantity' do
+            @inventory_food.quantity = nil
+            expect(@inventory_food).to_not be_valid
+        end
+
         
     end
 end
