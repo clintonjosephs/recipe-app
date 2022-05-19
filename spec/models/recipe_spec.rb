@@ -52,6 +52,9 @@ RSpec.describe Recipe, type: :model do
             expect(@recipe).to_not be_valid
         end
 
-        
+        it 'should not be valid with description longer than 255 characters' do
+            @recipe.description = 'a' * 256
+            expect(@recipe).to_not be_valid
+        end
     end
 end
