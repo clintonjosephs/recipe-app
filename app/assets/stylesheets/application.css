@@ -168,3 +168,7 @@ td img {
   background-color: var(--accent-color);
   color: var(--white);
 }
+
+.public-card {
+  height: 32rem;
+}
