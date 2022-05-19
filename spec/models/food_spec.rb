@@ -27,6 +27,12 @@ RSpec.describe Food, type: :model do
             expect(@food).to be_valid
         end
 
-       
+        it 'should not be valid without name' do
+            @food.name = nil
+            @food.measurement_unit = 'g'
+            expect(@food).to_not be_valid
+        end
+
+        
     end
 end
