@@ -10,6 +10,10 @@ The end result should follow the following data model (this is an Entity Relatio
 
 > ![](https://github.com/microverseinc/curriculum-rails/blob/main/recipe-app/images/recipe_app_erd.png)
 
+### Preview
+
+![](./app/assets/images/Screenshot.png)
+
 
 
 ## Built With
