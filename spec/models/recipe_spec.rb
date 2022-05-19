@@ -42,6 +42,11 @@ RSpec.describe Recipe, type: :model do
             expect(@recipe).to_not be_valid
         end
 
+        it 'should not be valid without user' do
+            @user.destroy
+            expect(@recipe).to_not be_valid
+        end
+
         
     end
 end
