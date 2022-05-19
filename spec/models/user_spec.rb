@@ -18,6 +18,14 @@ RSpec.describe User, type: :model do
             )
             expect(user).to_not be_valid
         end
+        it 'should not be valid without password' do
+            user = User.new(
+                email: 'test@mail.com',
+                password: nil,
+                password_confirmation: 'nil'
+            )
+            expect(user).to_not be_valid
+        end
         
     end
 end
