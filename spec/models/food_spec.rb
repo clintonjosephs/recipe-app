@@ -43,6 +43,9 @@ RSpec.describe Food, type: :model do
             expect(@food).to_not be_valid
         end
 
-        
+        it 'should not be valid without user_id' do
+            @food.user_id = nil
+            expect(@food).to_not be_valid
+        end
     end
 end
