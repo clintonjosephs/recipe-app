@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: [:public_recipes]
+  before_action :authenticate_user!, except: [:show]
   load_and_authorize_resource
 
   def index
@@ -12,6 +12,8 @@ class RecipesController < ApplicationController
     @recipe_foods = Food.all.joins('INNER JOIN recipe_foods ON foods.id = recipe_foods.food_id')
       .order(created_at: :desc).select('foods.*, recipe_foods.quantity, recipe_foods.id as recipe_foods_id')
       .where(recipe_foods: { recipe_id: params[:id] }).with_attached_image
+    return unless current_user
+
     @inventory_hash = Inventory.all.where(user_id: current_user.id).map { |inventory| [inventory.name, inventory.id] }
   end
 
