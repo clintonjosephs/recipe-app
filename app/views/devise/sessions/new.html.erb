@@ -1,0 +1,49 @@
+<section class="container-fluid vh-100" style="background-color: var(--neutral-color-2);">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-color: var(--primary-color);">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="https://images-na.ssl-images-amazon.com/images/I/71p-uMsPA4L.jpg"
+                alt="login form" class="img-fluid" style="min-height: 100%;  dwidth: 100%;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+                <%= form_for(resource, as: resource_name, url: new_user_session_path) do |f| %>
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+
+                  <div class="form-outline mb-4">
+                    <%= f.label 'Email Address', class: 'form-label' %>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg', :required => true %>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <%= f.label 'Password', class: 'form-label' %><br />
+                    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control form-control-lg', :required => true%>
+                  </div>
+                  <div class="pt-1 mb-4">
+                    <div>
+                      <% if devise_mapping.rememberable? %>
+                          <%= f.check_box :remember_me %>
+                          <%= f.label :remember_me, class: 'form-label'%>
+                      <% end %>
+                    </div>
+                    <%= f.submit "Log in", class: "btn btn-dark btn-lg btn-block" %>
+                  </div>
+                  <%= link_to "Forgot password?", new_user_password_path, class: "small text-muted" %>
+                  <p style="color: var(--primary-color);">
+                  Don't have an account? 
+                   <%= link_to "Register Here", new_user_registration_path, style: "color: var(--primary-color);" %>
+                    </p>
+                  <a href="#!" class="small text-muted">Terms of use.</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a>
+                  <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

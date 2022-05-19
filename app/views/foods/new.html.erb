@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="mb-3 col-md-8 offset-md-2">
+    <div class="row g-0">
+        <div class="col-md-12 background shadow">
+            <div class="card-body transbox">
+                <h5 class="card-title">Add Food to your store</h5>
+                <%= form_with model: @food, url: foods_path, local: true do |form| %>
+                    <div class="form-floating mb-3">
+                        <%= form.file_field :image, class: 'form-control' %>
+                        <%= form.label :image, 'Image if any', class: 'p-2' %>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <%= form.text_field :name, class: "form-control", required: true %>
+                        <%= form.label :name, "Name of Food *" %>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <%= form.select :measurement_unit, [['grams', 'g'], ['kilograms', 'kg'], ['milligrams', 'ml'], ['liter', 'l'], ['ounces', 'oz'], ['pound', 'lb'], ['cup', 'cup'], ['pint', 'pint'], ['quart', 'quart'], ['gallon', 'gallon']], {:include_blank => "-", :required => true}, {:class => 'form-control'} %>
+                        <%= form.label :measurement_unit, "Choose measuring unit *" %>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <%= form.number_field :price, class: "form-control", required: true %>
+                        <%= form.label :price, "Unit price($) *" %>
+                    </div>
+                    <div class="form-group mt-3">
+                        <%= form.submit '🥣 Add Food', class: "btn", style: "background-color: var(--primary-color); color: var(--white);", data: {disable_with: "Loading..."} %>
+                    </div>
+                <% end %>
+                <p class="card-text"><small class="text-muted">updating as <%= current_user.name %></small></p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

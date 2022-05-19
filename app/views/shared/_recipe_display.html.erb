@@ -1,0 +1,24 @@
+<div class="col-md-4 offset-md-1 shadow inventory-card mb-3">
+<div class="row g-0">
+    <div class="col-md-3">
+        <% if recipe.image.present? %>
+            <%= image_tag recipe.image, class: "img-fluid" %>
+        <% else %>
+            <%= image_tag "no-food-image.png", class: "img-fluid" %>
+        <% end %>
+    </div>
+    <div class="col-md-9">
+    <div class="card-body">
+        <h5 class="card-title"><%= recipe.name %></h5>
+        <p class="card-text"><%= recipe.description.length < 54 ? recipe.description : truncate(recipe.description, length: 100, omission: '...') %></p>
+        <p class="card-text">
+            <%= link_to '<i class="fa fa-eye" aria-hidden="true"></i> Show'.html_safe, recipe_path(recipe.id), class: 'btn btn-outline-info' %>
+            <%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i> Delete'.html_safe, recipe_path(recipe.id), method: :delete, data: { confirm: "Delete recipe #{recipe.name}?" }, class: 'btn btn-outline-danger' if can? :destroy, recipe %>
+        </p>
+        <% if current_user %>
+            <small class="text-muted" style="float:right"><%= recipe.public ? '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe : '' %></small>
+        <% end %>
+    </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,34 @@
+<%= link_to ' << Recipe', recipe_path(recipe.id), class: "btn btn-outline-success mb-5" %> 
+<div class="row">
+    <div class="mb-3 col-md-8 offset-md-2 inventory-card shadow">
+        <div class="card-body">
+        <% if type != 'edit' %>
+            <h5>Add Ingredient to <%= recipe.name %></h5>
+        <% else %>
+            <h6>Updating <i> <%= recipe_food.food.name %> </i> in <%= recipe.name %></h6>
+        <% end %>
+        <%= form_with model: recipe_food, url: url, method: method, local: true do |form| %>
+            <% if type != 'edit' %>
+                <div class="form-floating mb-3">
+                    <%= form.select :food_id, foods.map { |food| [food.name, food.id] }, {:include_blank => "-", :required => true}, {:class => 'form-control'} %>
+                    <%= form.label :food_id, "Choose food from the list to add *" %>
+                </div>
+            <% end %>
+            <div class="form-floating mb-3">
+                <%= form.number_field :quantity, class: "form-control", required: true %>
+                <%= form.label :quantity, "Quantity *" %>
+            </div>
+            <% if type != 'edit' %>
+                <div class="form-group mt-3">
+                    <%= form.submit 'Add Ingredient to recipe', class: "btn btn-primary", data: {disable_with: "Loading..."} %>
+                </div>
+            <% else %>
+                <div class="form-group mt-3">
+                    <%= form.submit "Update #{recipe_food.food.name}", class: "btn btn-primary", data: {disable_with: "Loading..."} %>
+                </div>    
+            <% end %>
+        <% end %>
+        <p class="card-text"><small class="text-muted">Updating as <%= current_user.name %></small></p>
+        </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="row">
+<h1 class="text-center">Public Recipes</h1>
+<% @publics.each do |public|%>
+<div class="col-md-3">
+<div class="shadow-lg m-3 bg-white public-card">
+    <% if public.image.present? %>
+       <%= image_tag public.image, class: "card-img-top" %>
+    <% else %>
+        <%= image_tag "no-food-image.png", class: "card-img-top" %>
+    <% end %>
+    <div class="card-body">
+        <h5 class="card-title py-3"><%= public.name %></h5>
+        <p class="card-text"><%= truncate(public.description, length: 90, omission: '...') %></p>
+        <a href="/recipes/<%= public.id %>" class="btn", style= "background-color: var(--primary-color); color: var(--white)">View Recipe</a>
+    </div>
+</div>
+</div>
+<% end %>
+</div>

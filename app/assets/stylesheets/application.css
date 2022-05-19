@@ -1,0 +1,174 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: #f89223;
+  --neutral-color-1: #8c8e91;
+  --neutral-color-2: #f2f1ee;
+  --accent-color: #6fb43f;
+  --white: #fff;
+  --black: #000;
+  --red: #f00;
+  --font: 'Poppins', sans-serif;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('Poppins-Regular.ttf');
+}
+
+body {
+  overflow-y: auto;
+  box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.05);
+  background-color: var(--white);
+  font-family: var(--font);
+  transition: background ease-out 1s 0.1s;
+  padding-bottom: 5rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--neutral-color-1);
+  padding: 1rem;
+  text-align: center;
+  color: var(--neutral-color-2);
+  font-size: 0.8rem;
+}
+
+.navbar {
+  color: var(--white);
+}
+
+.navbar a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.dropdown-menu li a {
+  color: var(--black) !important;
+}
+
+.navbar a:hover {
+  color: var(--neutral-color-2);
+}
+
+.navbar a:active {
+  color: var(--neutral-color-2) !important;
+}
+
+.bio-photo {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.user-details {
+  font-size: small !important;
+}
+
+.link-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0;
+}
+
+.navbar-toggler {
+  color: var(--black) !important;
+}
+
+.navbar-toggler:active {
+  border: none !important;
+}
+
+div.background {
+  background: url(https://thumbs.dreamstime.com/b/set-different-food-items-7402256.jpg) repeat;
+  background-size: cover;
+}
+
+div.transbox {
+  margin: 30px;
+  background-color: #fff;
+  opacity: 0.9;
+}
+
+div.transbox p {
+  margin: 5%;
+  font-weight: bold;
+}
+
+td img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.inventory-card {
+  border-radius: 0 !important;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.recipe-card {
+  border-radius: 0 !important;
+  padding: 4px;
+}
+
+.shadow {
+  -moz-box-shadow: 0 0 3px #ccc !important;
+  -webkit-box-shadow: 0 0 3px #ccc !important;
+  box-shadow: 0 0 35px #ccc !important;
+}
+
+.card-link {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.btn-accent {
+  background-color: var(--accent-color);
+  color: var(--white);
+}
+
+.public-card {
+  height: 32rem;
+}

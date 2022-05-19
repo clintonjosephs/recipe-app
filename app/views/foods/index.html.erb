@@ -1,0 +1,35 @@
+<h5 class="card-title">List of foods</h5>
+<div class="table-responsive">
+  <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Measurement Unit</th>
+        <th>Unit Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td>
+            <% if food.image.present? %>
+              <%= image_tag food.image, class: "bio-photo" %>
+            <% else %>
+              <%= image_tag "https://nuwaay.com/wp-content/uploads/2022/01/default_256.png", class: "bio-photo" %>
+            <% end %>
+          </td>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= food.price %></td>
+          <td>
+            <a href="<%= food_path(food.id) %>" data-confirm="Are you sure you want to delete <%= food.name %>?" data-method="delete" class='btn btn-danger'>Delete</a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</table>
+</div>
