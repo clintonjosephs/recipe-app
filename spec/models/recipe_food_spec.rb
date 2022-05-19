@@ -53,6 +53,11 @@ RSpec.describe RecipeFood, type: :model do
             expect(@recipe_food).to_not be_valid
         end
 
-       
+        it 'should not be valid without quantity' do
+            @recipe_food.recipe_id = @recipe.id
+            @recipe_food.food_id = @food.id
+            @recipe_food.quantity = nil
+            expect(@recipe_food).to_not be_valid
+        end
     end 
 end
