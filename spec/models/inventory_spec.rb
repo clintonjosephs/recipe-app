@@ -33,6 +33,9 @@ RSpec.describe Inventory, type: :model do
             expect(@inventory).to_not be_valid
         end
 
-        
+        it 'should not be valid without user_id' do
+            @inventory.user_id = nil
+            expect(@inventory).to_not be_valid
+        end
     end
 end
