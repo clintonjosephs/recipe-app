@@ -5,7 +5,11 @@
 <div class="card-deck">
 <div class="card m-3 shadow-lg p-3 mb-5 bg-white rounded">
     <div class="card-body">
-        
+        <% if public.image.present? %>
+              <%= image_tag public.image, class: "card-img-top" %>
+            <% else %>
+              <%= image_tag "https://nuwaay.com/wp-content/uploads/2022/01/default_256.png", class: "card-img-top" %>
+            <% end %>
         <h5 class="card-title py-3"><%= public.name %></h5>
         <p class="card-text"><%= truncate(public.description, length: 90, omission: '...') %></p>
         <a href="/recipes/<%= public.id %>" class="btn", style= "background-color: var(--primary-color); color: var(--white)">View Recipe</a>
