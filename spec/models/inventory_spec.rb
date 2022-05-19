@@ -27,6 +27,12 @@ RSpec.describe Inventory, type: :model do
             expect(@inventory).to be_valid
         end
 
+        it 'should not be valid without name' do
+            @inventory.name = nil
+            @inventory.description = 'Inventory'
+            expect(@inventory).to_not be_valid
+        end
+
         
     end
 end
