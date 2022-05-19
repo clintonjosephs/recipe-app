@@ -55,3 +55,13 @@
             <i class="fa fa-pencil" aria-hidden="true"></i>  
             Modify
           </a>
+                  <a href="<%= recipe_recipe_food_path(@recipe.id, recipe_food.recipe_foods_id) %>" data-confirm="Delete <%= recipe_food.name %> from this recipe?" data-method="delete" class='btn btn-outline-danger'>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            Delete
+          </a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
