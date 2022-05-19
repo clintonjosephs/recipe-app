@@ -7,7 +7,7 @@ RSpec.describe 'Food List', type: :feature do
         @user = FactoryBot.create(:user)
         m = 5
         while m > 0
-            FactoryBot.create(:food, user: @user)
+            FactoryBot.create(:food, name: "#{Faker::Food.name}#{m}" , user: @user)
             m -= 1
         end
     end
