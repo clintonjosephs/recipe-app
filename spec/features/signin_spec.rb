@@ -37,6 +37,8 @@ RSpec.describe 'Signin', type: :feature do
             click_button('Log in')
             expect(page).to have_current_path(root_path)
             expect(page).to have_content('Signed in successfully')
+            expect(page).to have_content(@user.email)
+            expect(page).to have_content(@user.name)
         end
     end
 end
