@@ -38,3 +38,20 @@
       </tr>
     </thead>
     <tbody>
+          <% @recipe_foods.each do |recipe_food| %>
+        <tr>
+          <td>
+              <% if recipe_food.image.present? %>
+                <%= image_tag recipe_food.image, class: "bio-photo" %>
+              <% else %>
+                <%= image_tag "no-food-image.png", class: "bio-photo" %>
+              <% end %>
+          </td>
+          <td><%= recipe_food.name %></td>
+          <td><%= recipe_food.quantity %></td>
+          <td>$<%= recipe_food.price * recipe_food.quantity %></td>
+          <td>
+          <a href="<%= edit_recipe_recipe_food_path(@recipe.id, recipe_food.recipe_foods_id) %>" class='btn btn-outline-primary'>
+            <i class="fa fa-pencil" aria-hidden="true"></i>  
+            Modify
+          </a>
