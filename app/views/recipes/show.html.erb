@@ -11,7 +11,7 @@
               <p class="text-start"><i class="fa fa-clock-o" aria-hidden="true"></i> Preparation time: <%= @recipe.preparation_time %></p>
               <p class="text-start"><i class="fa fa-clock-o" aria-hidden="true"></i> Cooking time: <%= @recipe.cooking_time %></p> 
           </div>
-          <% if current_user %>
+          <% if current_user && @recipe.user_id == current_user.id %>
             <div class="col-md-3">
                 <%= form_with model: @recipe, url: recipe_path(@recipe.id), method: :patch, local: true do |form| %>
                   <div class="form-switch">
@@ -23,7 +23,7 @@
           <% end %>
         </div>
     </div>
-    <% if current_user %>
+    <% if current_user && @recipe.user_id == current_user.id %>
       <div class="mt-4">
           <button type="button"class='btn btn-outline-primary mb-2 flex-start' data-bs-toggle="modal" data-bs-target="#listBackdrop">
             <i class="fa fa-shopping-basket" aria-hidden="true"></i> Generate shopping list
@@ -40,7 +40,7 @@
         <th>Food</th>
         <th>Quantity</th>
         <th>Value</th>
-        <% if current_user %>
+        <% if current_user && @recipe.user_id == current_user.id %>
           <th>Action</th>
         <% end %>
       </tr>
@@ -58,7 +58,7 @@
           <td><%= recipe_food.name %></td>
           <td><%= recipe_food.quantity %></td>
           <td>$<%= recipe_food.price * recipe_food.quantity %></td>
-          <% if current_user %>
+          <% if current_user && @recipe.user_id == current_user.id %>
             <td>
               <a href="<%= edit_recipe_recipe_food_path(@recipe.id, recipe_food.recipe_foods_id) %>" class='btn btn-outline-primary'>
                 <i class="fa fa-pencil" aria-hidden="true"></i>  
@@ -76,7 +76,7 @@
   </table>
 </div>
 
-<% if current_user %>
+<% if current_user && @recipe.user_id == current_user.id %>
 <%= render partial: "shared/shopping_list_setup", locals: { list: @inventory_hash, recipe: @recipe.id } %>
 <% end %>
 
