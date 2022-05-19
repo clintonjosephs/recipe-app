@@ -3,7 +3,13 @@
 <% @publics.each do |public|%>
 <div class="col-md-3">
 <div class="card-deck">
-
+<div class="card m-3 shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+        
+        <h5 class="card-title py-3"><%= public.name %></h5>
+        <p class="card-text"><%= truncate(public.description, length: 90, omission: '...') %></p>
+        <a href="/recipes/<%= public.id %>" class="btn", style= "background-color: var(--primary-color); color: var(--white)">View Recipe</a>
+    </div>
 </div>
 </div>
 </div>
