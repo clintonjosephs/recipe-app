@@ -53,6 +53,9 @@ RSpec.describe InventoryFood, type: :model do
             expect(@inventory_food).to_not be_valid
         end
 
-        
+        it 'id should be a number' do
+            @inventory_food.id = 1
+            expect(@inventory_food).to be_valid
+        end
     end
 end
