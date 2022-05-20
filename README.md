@@ -29,6 +29,7 @@ The end result should follow the following data model (this is an Entity Relatio
   - Faker
   - cancancan
   - Devise
+  - FactoryBot
 
 
 ## Getting Started
