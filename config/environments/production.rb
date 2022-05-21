@@ -90,7 +90,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { host: 'https://peaceful-plateau-96727.herokuapp.com/' }
-  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'gmail.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name:      'appdev.techie@gmail.com',
+    password:       'mypa55port',
+    domain:         'gmail.com',
+    address:       'smtp.gmail.com',
+    port:          '587',
+    authentication: :plain,
+    enable_starttls_auto
 end
