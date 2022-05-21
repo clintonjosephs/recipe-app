@@ -95,7 +95,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'gmail.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name:      'appdev.techie@gmail.com',
+    user_name:      "appdev.techie@gmail.com",
     password:       'mypa55port',
     domain:         'gmail.com',
     address:       'smtp.gmail.com',
